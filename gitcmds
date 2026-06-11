@@ -1,0 +1,347 @@
+Git Commands — Complete Practical Script
+1. What is Git?
+
+Git is a version control tool. It tracks changes in your code, helps you go back to old versions, create branches, merge work, and collaborate with others.
+
+GitHub is a cloud platform where Git repositories are stored online.
+
+2. Basic Git Setup
+Check Git version
+git --version
+
+Shows installed Git version.
+
+Set username
+git config --global user.name "Gande Saivamshi"
+Set email
+git config --global user.email "yourmail@gmail.com"
+Check config
+git config --list
+3. Create / Initialize Repository
+Create new folder
+mkdir my-project
+cd my-project
+Initialize Git
+git init
+
+This creates a hidden .git folder. Now Git starts tracking this project.
+
+4. Check Status
+git status
+
+Shows:
+
+Untracked files
+Modified files
+Staged files
+Branch name
+5. Add Files to Staging Area
+Add one file
+git add index.html
+Add all files
+git add .
+
+Staging means: “prepare these changes for commit.”
+
+6. Commit Changes
+git commit -m "initial commit"
+
+Commit means saving a snapshot of your code.
+
+Example:
+
+git add .
+git commit -m "added homepage"
+7. View Commit History
+git log
+
+Short format:
+
+git log --oneline
+
+Example output:
+
+a1b2c3d added homepage
+e4f5g6h initial commit
+8. Connect Local Repo to GitHub
+Add remote repository
+git remote add origin https://github.com/username/repo-name.git
+Check remote
+git remote -v
+
+Output:
+
+origin  https://github.com/username/repo-name.git (fetch)
+origin  https://github.com/username/repo-name.git (push)
+9. Push Code to GitHub
+Push main branch
+git branch -M main
+git push -u origin main
+
+After first push, next time simply:
+
+git push
+10. Clone Repository
+git clone https://github.com/username/repo-name.git
+
+This downloads the GitHub repo to your system.
+
+11. Pull Latest Changes
+git pull
+
+Gets latest changes from GitHub to local system.
+
+Full command:
+
+git pull origin main
+12. Branch Commands
+Check branches
+git branch
+Create new branch
+git branch feature-login
+Switch branch
+git checkout feature-login
+
+Modern command:
+
+git switch feature-login
+Create and switch together
+git checkout -b feature-login
+
+or
+
+git switch -c feature-login
+13. Merge Branch
+
+First go to main branch:
+
+git checkout main
+
+Then merge:
+
+git merge feature-login
+
+This brings feature-login changes into main.
+
+14. Delete Branch
+Delete local branch
+git branch -d feature-login
+
+Force delete:
+
+git branch -D feature-login
+Delete remote branch
+git push origin --delete feature-login
+15. Git Workflow Example
+git clone https://github.com/username/project.git
+cd project
+
+git checkout -b feature-navbar
+
+# make changes
+
+git status
+git add .
+git commit -m "added navbar"
+git push origin feature-navbar
+
+Then create Pull Request on GitHub.
+
+16. Undo Commands
+Unstage file
+git restore --staged file.txt
+Discard local changes
+git restore file.txt
+Undo last commit but keep changes
+git reset --soft HEAD~1
+Undo last commit and remove changes
+git reset --hard HEAD~1
+
+Careful: --hard deletes changes.
+
+17. Fix Wrong Remote URL
+
+Check remote:
+
+git remote -v
+
+Change remote URL:
+
+git remote set-url origin https://github.com/username/new-repo.git
+18. Rename Branch
+git branch -M main
+
+This renames current branch to main.
+
+19. Common Real-Time Push Commands
+First-time GitHub push
+git init
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/username/repo.git
+git push -u origin main
+After changes
+git add .
+git commit -m "updated project"
+git push
+20. If Local Branch and Remote Branch Names Are Different
+
+Example error:
+
+upstream branch does not match current branch
+
+Fix:
+
+git push -u origin main
+
+or if remote branch is master:
+
+git push origin HEAD:master
+
+Better option:
+
+git branch -M main
+git push -u origin main
+21. Git Ignore
+
+Create .gitignore file:
+
+touch .gitignore
+
+Example .gitignore:
+
+node_modules/
+.env
+dist/
+build/
+*.log
+
+Then:
+
+git add .gitignore
+git commit -m "added gitignore"
+22. Stash Commands
+
+Stash temporarily saves uncommitted changes.
+
+Save changes
+git stash
+View stash list
+git stash list
+Apply latest stash
+git stash apply
+Apply and remove stash
+git stash pop
+Delete stash
+git stash drop
+23. Tags
+
+Tags are used for releases.
+
+git tag v1.0
+git push origin v1.0
+
+View tags:
+
+git tag
+24. Important Interview Explanation
+Working Directory
+
+Where you edit files.
+
+Staging Area
+
+Where files are prepared before commit.
+
+Local Repository
+
+Where commits are stored locally.
+
+Remote Repository
+
+GitHub/GitLab/Bitbucket online repo.
+
+Flow:
+
+Working Directory → Staging Area → Local Repo → Remote Repo
+
+Commands:
+
+git add .
+git commit -m "message"
+git push
+25. Most Used Git Commands Table
+Command	Use
+git init	Create local Git repo
+git status	Check file status
+git add .	Stage all changes
+git commit -m "msg"	Save changes
+git log --oneline	View commit history
+git branch	Show branches
+git checkout -b branch	Create and switch branch
+git merge branch	Merge branch
+git remote -v	Check remote URL
+git push	Upload code
+git pull	Download latest changes
+git clone URL	Copy remote repo
+git stash	Temporarily save changes
+git reset	Undo commits
+26. Daily Git Practice Script
+
+Use this every day:
+
+git status
+git add .
+git commit -m "meaningful commit message"
+git pull origin main
+git push origin main
+
+For feature branch:
+
+git checkout -b feature-name
+git add .
+git commit -m "added feature"
+git push origin feature-name
+27. Best Commit Message Examples
+
+Good:
+
+git commit -m "added login page"
+git commit -m "fixed navbar alignment"
+git commit -m "updated Dockerfile"
+git commit -m "configured GitHub Actions workflow"
+
+Bad:
+
+git commit -m "changes"
+git commit -m "update"
+git commit -m "final"
+28. Important DevOps Git Commands
+Clone application repo
+git clone https://github.com/user/app.git
+Checkout deployment branch
+git checkout dev
+Pull latest code before build
+git pull origin dev
+Create release tag
+git tag v1.0.0
+git push origin v1.0.0
+Check latest commit
+git log --oneline -5
+29. Complete Git Push Script
+cd project-folder
+
+git init
+git status
+
+git add .
+git commit -m "first commit"
+
+git branch -M main
+
+git remote add origin https://github.com/username/repository-name.git
+
+git push -u origin main
+
+That is the clean first-time GitHub upload command set.
