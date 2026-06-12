@@ -704,3 +704,5 @@ ssh
 scp
 crontab -e
 crontab -l
+
+These are the commands you should practice first.
