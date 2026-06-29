@@ -1,12 +1,5 @@
 # Complete Linux Commands Guide for Admin, DevOps, Networking, Permissions, Logs and Troubleshooting
 
-This file is GitHub-ready Markdown.  
-Use file extension:
-
-```text
-linux-complete-admin-guide.md
-```
-
 ---
 
 # 1. Basic Linux System Information
